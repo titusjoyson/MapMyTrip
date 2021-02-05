@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "820011272756",
+    "project_id": "mapmytrip-76afe",
+    "storage_bucket": "mapmytrip-76afe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820011272756:android:3b37b80b256ae60ff55861",
+        "android_client_info": {
+          "package_name": "com.mapmytrip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "820011272756-ulb3k959v5q4uf3b98d0e772g9r8m9e2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mapmytrip",
+            "certificate_hash": "0359e77132bb366e91eee13015f4505ab20b9279"
+          }
+        },
+        {
+          "client_id": "820011272756-bs6v8h58htkser9h4te6rn7901ecqqai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPubvO-lqbu1t9njdZ6BnqxpgiJJ9aTuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "820011272756-bs6v8h58htkser9h4te6rn7901ecqqai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
