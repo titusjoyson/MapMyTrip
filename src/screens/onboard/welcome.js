@@ -72,11 +72,17 @@ export default () => (
             </View>
             <View style={layouts.row}>
                 <Text style={styles.termsText}>agree to Path's </Text>
-                <TouchableText textStyle={styles.termsTextHighligh}>Terms of Use</TouchableText>
+                <TouchableText
+                    onPress={()=>alert("Soon")} 
+                    textStyle={styles.termsTextHighligh}
+                >Terms of Use</TouchableText>
             </View>
             <View style={layouts.row}>
                 <Text style={styles.termsText}> and </Text>
-                <TouchableText textStyle={styles.termsTextHighligh}>Privacy Policy</TouchableText>
+                <TouchableText 
+                    onPress={()=>alert("Soon")} 
+                    textStyle={styles.termsTextHighligh}
+                >Privacy Policy</TouchableText>
             </View>
         </View>
     </Layout>

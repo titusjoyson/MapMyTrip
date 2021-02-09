@@ -17,26 +17,14 @@ import {
 } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import * as eva from '@eva-design/eva';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Welcome } from './screens/onboard';
-import Default from './theme/Default';
+import { Main } from './navigations';
 
-const Stack = createStackNavigator();
 
 export default () => (
 	<>
 		<IconRegistry icons={EvaIconsPack} />
 		<ApplicationProvider {...eva} theme={eva.light}>
-			<NavigationContainer>
-				<Stack.Navigator>
-					<Stack.Screen
-						name="welcome"
-						component={Welcome}
-						options={{ headerShown: false }}
-					/>
-				</Stack.Navigator>
-			</NavigationContainer>
+			<Main />
 		</ApplicationProvider>
 	</>
 );
