@@ -1,9 +1,11 @@
 import React from 'react';
+import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Welcome } from '../screens/onboard';
 import Home from '../screens/home';
+import Map from '../screens/Map';
 import TabIcon from '../components/tabIcon';
 
 const Stack = createStackNavigator();
@@ -15,7 +17,7 @@ const Tab = createBottomTabNavigator()
 const HomeTabs = () => {
     return (
         <Tab.Navigator
-            initialRouteName="Home"
+            initialRouteName="Map"
             shifting={true}
             sceneAnimationEnabled={false}
         >
@@ -36,8 +38,24 @@ const HomeTabs = () => {
                 }}
             />
             <Tab.Screen
+                name="Map"
+                component={Map}
+                options={{
+                    headerShown: false,
+                    tabBarLabel: () => <></>,
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <TabIcon
+                            focused={focused}
+                            color={color}
+                            size={size}
+                            iconName="map"
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen
                 name="Bookmark"
-                component={Home}
+                component={View}
                 options={{
                     headerShown: false,
                     tabBarLabel: () => <></>,
@@ -53,7 +71,7 @@ const HomeTabs = () => {
             />
             <Tab.Screen
                 name="Profile"
-                component={Home}
+                component={View}
                 options={{
                     headerShown: false,
                     tabBarLabel: () => <></>,
