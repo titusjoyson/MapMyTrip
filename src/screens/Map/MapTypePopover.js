@@ -29,12 +29,15 @@ const MapTile = ({ style, title, image, selected, onPress }) => {
 class MapSections extends React.Component {
     static propTypes = {
         data: PropTypes.array,
-        multiSelect: PropTypes.bool
+        multiSelect: PropTypes.bool,
+        value: PropTypes.object,
+        onChange: PropTypes.function
     }
     static defaultProps = {
         data: [],
         multiSelect: false,
-
+        value: {},
+        onChange: ()=>{}
     }
     state = {
         data: []
@@ -45,11 +48,12 @@ class MapSections extends React.Component {
     }
 
     componentDidMount() {
+        const { value, data } = this.props;
         let state = {};
-        this.props.data.map(d => {
-            state[d.key] = null
+        data.map(d => {
+            state[d.key] = value[d.key]
         })
-        this.setState({ ...state, data: this.props.data })
+        this.setState({ ...state, data: data })
     }
 
     _isSelected = (data) => {
@@ -74,7 +78,7 @@ class MapSections extends React.Component {
 
         selectedKey[data.key] = nextValue
         this.setState(selectedKey, () => {
-
+            this.props.onChange(selectedKey)
         })
     }
 
@@ -111,7 +115,7 @@ class MapSections extends React.Component {
     }
 }
 
-const MapTypePopover = ({ style }) => {
+const MapTypePopover = ({ style, value, onChange = () => {} }) => {
 
     const [visible, setVisible] = React.useState(false);
 
@@ -154,6 +158,10 @@ const MapTypePopover = ({ style }) => {
                         }
                     ]}
                     multiSelect={false}
+                    value={{
+                        mapType: value.mapType
+                    }}
+                    onChange={(value)=>onChange(value)}
                 />
                 <MapSections
                     title="Map Details"
@@ -161,7 +169,7 @@ const MapTypePopover = ({ style }) => {
                     data={[
                         {
                             image: "https://placeimg.com/100/104/any",
-                            title: "Standard",
+                            title: "Traffic",
                             key: "showsTraffic",
                             value: false
                         },
@@ -179,6 +187,12 @@ const MapTypePopover = ({ style }) => {
                         }
                     ]}
                     multiSelect
+                    value={{
+                        showsTraffic: value.showsTraffic,
+                        showsBuildings: value.showsBuildings,
+                        showsPointsOfInterest: value.showsPointsOfInterest,
+                    }}
+                    onChange={(value)=>onChange(value)}
                 />
             </Layout>
         </Popover>

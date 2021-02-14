@@ -8,8 +8,16 @@ import styles from './index.style';
 
 
 class Map extends React.Component {
+    state = {
+        mapType: "satellite",
+        showsPointsOfInterest: false,
+        showsBuildings: false,
+        showsTraffic: false
+    }
 
     render() {
+        const { mapType, showsPointsOfInterest, showsBuildings, showsTraffic } = this.state;
+
         return (
             <SafeAreaView
                 style={styles.container}
@@ -28,14 +36,24 @@ class Map extends React.Component {
                     showsCompass
                     showsScale
 
-                    showsPointsOfInterest={false}
-                    showsBuildings={true}
-                    showsTraffic={false}
+                    showsPointsOfInterest={showsPointsOfInterest}
+                    showsBuildings={showsBuildings}
+                    showsTraffic={showsTraffic}
+                    mapType={mapType}
                 >
                         
                 </MapView>
                 <MapTypePopover 
-                    style={styles.mapTypePopover} 
+                    style={styles.mapTypePopover}
+                    value={{
+                        mapType,
+                        showsPointsOfInterest,
+                        showsBuildings,
+                        showsTraffic
+                    }}
+                    onChange={(value)=>{
+                        this.setState(value)
+                    }}
                 />
             </SafeAreaView>
         )
