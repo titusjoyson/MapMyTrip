@@ -21,7 +21,8 @@ class Map extends React.Component {
             longitude: -122.4324,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
-        }
+        },
+        mapStyle:{ marginBottom: 1 }
     }
 
     componentDidMount() {
@@ -58,12 +59,12 @@ class Map extends React.Component {
                 edges={['right', 'top', 'left']}
             >
                 <MapView
-                    style={styles.map}
+                    style={[styles.map, this.state.mapStyle]}
                     initialRegion={region}
                     region={region}
 
-                    showsMyLocationButton
-                    showsUserLocation
+                    showsMyLocationButton={false}
+                    showsUserLocation={false}
                     showsCompass
                     showsScale
 
@@ -71,6 +72,8 @@ class Map extends React.Component {
                     showsBuildings={showsBuildings}
                     showsTraffic={showsTraffic}
                     mapType={mapType}
+
+                    onMapReady={() => this.setState({mapStyle:{ marginBottom: 0 }})}
                 >
 
                 </MapView>
@@ -96,9 +99,9 @@ class Map extends React.Component {
                 <View style={styles.bottomFloatingContainer}>
                     <MyLocation
                         onPress={value => {
-                            //alert(JSON.stringify(value.coords))
                             this.setState({
-                                initialRegion: {
+                                region: {
+                                    ...region,
                                     latitude: value.coords.latitude,
                                     longitude: value.coords.longitude,
                                 }
