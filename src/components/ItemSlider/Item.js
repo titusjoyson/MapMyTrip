@@ -7,8 +7,10 @@ import styles from './item.style';
 class Item extends React.Component {
 
     render() {
+        const { style } = this.props;
+        
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, style]}>
                 <View style={styles.imageWrapper}>
                     <ImageBackground
                         source={{ uri: "https://placeimg.com/640/480/any" }} 

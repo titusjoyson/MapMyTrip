@@ -2,10 +2,10 @@ import React from 'react';
 import { View, ScrollView, Text } from 'react-native';
 import TouchableText from '../touchableText/TouchableText';
 import Item from './Item';
-import Separator from './Separator';
 import HomeTitle from '../HomeTitle';
 import styles from './index.style';
 import PropTypes from 'prop-types';
+var uuid = require('uuid');
 
 
 class ItemSlider extends React.Component {
@@ -13,17 +13,14 @@ class ItemSlider extends React.Component {
         data: PropTypes.array,
     }
     static defaultProps = {
-        data: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ]
+        data: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
     }
 
-    constructor(props){super(props)}
+    constructor(props) { super(props) }
 
     _renderItems = (data) => {
         return (
-            <>
-                <Separator />
-                <Item />
-            </>
+            <Item key={uuid.v4()} style={styles.item} />
         )
     }
 
@@ -47,7 +44,7 @@ class ItemSlider extends React.Component {
                     showsHorizontalScrollIndicator={false}
                     style={styles.scroll}
                 >
-                    {data.map(d=>this._renderItems(d))}
+                    {data.map(d => this._renderItems(d))}
                 </ScrollView>
             </View>
         )

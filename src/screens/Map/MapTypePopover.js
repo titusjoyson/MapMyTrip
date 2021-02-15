@@ -31,7 +31,7 @@ class MapSections extends React.Component {
         data: PropTypes.array,
         multiSelect: PropTypes.bool,
         value: PropTypes.object,
-        onChange: PropTypes.function
+        onChange: PropTypes.func
     }
     static defaultProps = {
         data: [],
@@ -115,7 +115,7 @@ class MapSections extends React.Component {
     }
 }
 
-const MapTypePopover = ({ style, value, onChange = () => {} }) => {
+const MapTypePopover = ({ style, value, onChange }) => {
 
     const [visible, setVisible] = React.useState(false);
 

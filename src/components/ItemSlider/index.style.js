@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
     },
     scroll:{
         
+    },
+    item:{
+        marginLeft: 10
     }
 });
 
